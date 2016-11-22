@@ -4,11 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var multer = require('multer');
+var upload = multer();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+app.use(upload.array());// for parsing multipart/form-data
 
 var allowCrossDomain = function(req, res, next) {
         // Website you wish to allow to connect
