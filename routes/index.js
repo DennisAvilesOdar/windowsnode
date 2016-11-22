@@ -34,6 +34,10 @@ router.get('/api/v1/todos', (req, res, next) => {
 });
 
 router.post('/api/v1/inicio', (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+
   const results = [];
   // Grab data from http request
   const data = {email: req.body.email, clave: req.body.password};
