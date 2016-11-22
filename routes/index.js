@@ -33,7 +33,7 @@ router.get('/api/v1/todos', (req, res, next) => {
   });
 });
 
-router.post('/api/v1/todos', (req, res, next) => {
+router.post('/api/v1/inicio', (req, res, next) => {
   const results = [];
   // Grab data from http request
   const data = {email: req.body.email, clave: req.body.password};
