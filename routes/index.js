@@ -3,7 +3,8 @@ const router = express.Router();
 const pg = require('pg');
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:12345@localhost:5432/bdproyecto';
-
+const multer = require('multer');
+const upload = multer();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
