@@ -3,8 +3,6 @@ const router = express.Router();
 const pg = require('pg');
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://postgres:12345@localhost:5432/bdproyecto';
-const multer = require('multer');
-const upload = multer();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,7 +23,7 @@ router.get('/api/v1/todos', (req, res, next) => {
     const query = client.query('SELECT * FROM articulo ORDER BY nombre;');
     // Stream results back one row at a time
     query.on('row', (row) => {
-      upload.push(row);
+      results.push(row);
     });
     // After all data is returned, close connection and return results
     query.on('end', () => {
