@@ -38,9 +38,15 @@ router.post('/api/v1/inicio', (req, res, next) => {
   res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
 
+  var clave = req.body.password;
+
+  var crypto = require('crypto');
+	var hash = crypto.createHash('md5').update(clave).digest('hex');
+	console.log(hash);
+
   const results = [];
   // Grab data from http request
-  const data = {email: req.body.email, clave: req.body.password};
+  const data = {email: req.body.email, clave: hash};
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
